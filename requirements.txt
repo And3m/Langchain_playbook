@@ -1,0 +1,19 @@
+langchain>=0.2.0
+langchain-community>=0.2.0
+# Relaxed openai version to allow resolver to pick compatible release in this environment
+openai
+tiktoken
+chromadb
+faiss-cpu; platform_system != 'Windows'
+faiss-cpu==1.8.0.post1; platform_system == 'Windows'
+python-dotenv
+pypdf
+youtube-transcript-api
+yt_dlp
+pydantic
+sqlalchemy
+pandas
+numpy
+matplotlib
+seaborn
+pytest

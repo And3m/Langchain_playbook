@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.egg-info/
+.dist/
+build/
+dist/
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb~
+
+# Data / Vector stores
+.chroma/
+*.sqlite
+*.db
+
+# Logs & caches
+*.log
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Others
+coverage.xml
+htmlcov/
+.mypy_cache/
+pytest_cache/
