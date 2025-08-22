@@ -1,0 +1,12 @@
+"""
+Logging utilities for LangChain Playbook.
+"""
+
+import logging
+import os
+from typing import Optional
+from rich.logging import RichHandler
+from rich.console import Console
+
+
+def setup_logging(level: Optional[str] = None, rich: bool = True) -> None:\n    \"\"\"Set up logging configuration.\n    \n    Args:\n        level: Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)\n        rich: Whether to use rich formatting\n    \"\"\"\n    if level is None:\n        level = os.getenv('LOG_LEVEL', 'INFO')\n    \n    level = getattr(logging, level.upper())\n    \n    # Clear any existing handlers\n    for handler in logging.root.handlers[:]:\n        logging.root.removeHandler(handler)\n    \n    if rich:\n        console = Console()\n        handler = RichHandler(\n            console=console,\n            show_time=True,\n            show_path=True,\n            markup=True\n        )\n        formatter = logging.Formatter(\n            \"%(message)s\",\n            datefmt=\"[%X]\"\n        )\n    else:\n        handler = logging.StreamHandler()\n        formatter = logging.Formatter(\n            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'\n        )\n    \n    handler.setFormatter(formatter)\n    \n    logging.basicConfig(\n        level=level,\n        handlers=[handler],\n        force=True\n    )\n\n\ndef get_logger(name: str) -> logging.Logger:\n    \"\"\"Get a logger instance.\n    \n    Args:\n        name: Logger name (usually __name__)\n        \n    Returns:\n        Logger instance\n    \"\"\"\n    return logging.getLogger(name)\n\n\ndef log_function_call(func_name: str, args: tuple, kwargs: dict, logger: logging.Logger) -> None:\n    \"\"\"Log a function call with its arguments.\n    \n    Args:\n        func_name: Name of the function being called\n        args: Positional arguments\n        kwargs: Keyword arguments\n        logger: Logger instance\n    \"\"\"\n    args_str = ', '.join(str(arg) for arg in args)\n    kwargs_str = ', '.join(f\"{k}={v}\" for k, v in kwargs.items())\n    \n    all_args = []\n    if args_str:\n        all_args.append(args_str)\n    if kwargs_str:\n        all_args.append(kwargs_str)\n    \n    logger.debug(f\"Calling {func_name}({', '.join(all_args)})\")
