@@ -140,6 +140,20 @@ This is now a community-ready educational resource! See [CONTRIBUTING.md](CONTRI
 3. **Join the community** - Contribute examples and improvements
 4. **Share your success** - Help others learn LangChain development
 
+### 🧹 **Repository Cleanup (Latest Update)**
+
+**Cleaned and optimized repository structure:**
+- ❌ Removed old GenAI project files (`genai_answers_guide.md`, `genai_interview_questions.md`, `genai_langchain_practice.ipynb`)
+- ❌ Removed unused directories from previous project:
+  - `archive/` - Old archive files
+  - `data/` - Sample CSV files from old project
+  - `scenarios/` - Old scenario implementations
+  - `scripts/` - Old project scripts
+  - `src/` - Old project source modules
+  - `stories/` - Old business story files
+
+**✅ Repository is now clean and focused exclusively on LangChain Playbook learning materials**
+
 ---
 
 **🚀 Ready to master LangChain development? Your comprehensive learning journey starts now!**
